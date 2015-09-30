@@ -18,11 +18,11 @@ public class Sheet extends Observable {
 
 	}
 
-	public double getSlotValue(String index) { //
+	public double getSlotValue(String name) { //
 		return 0;
 	}
 
-	public String getSlotString(String index) { //
+	public String getSlotString(String name) { //
 		return "";
 	}
 
@@ -32,6 +32,10 @@ public class Sheet extends Observable {
 
 	public String getStatus() {
 		return "";
+	}
+
+	public double value(String name) {
+		if slotMap does not contain name throw
 	}
 
 
