@@ -30,6 +30,11 @@ public class Sheet extends Observable {
 		//For loop, iterates slotMap
 	}
 
+	public String getStatus() {
+		return "";
+	}
+
+
 
 /* Tillhör observable:
 public void addObserver(Observer observer)  
