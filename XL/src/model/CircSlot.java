@@ -1,4 +1,6 @@
-public class CircSlot {
+package model;
+
+public class CircSlot implements Slot{
 
 	public CircSlot() {
 
