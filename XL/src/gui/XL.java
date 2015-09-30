@@ -1,10 +1,10 @@
 package gui;
 
 import static java.awt.BorderLayout.CENTER;
+import model.*;
+
 import static java.awt.BorderLayout.NORTH;
 import static java.awt.BorderLayout.SOUTH;
-import model.XLModel;
-
 
 import gui.menu.XLMenuBar;
 import java.awt.Graphics;

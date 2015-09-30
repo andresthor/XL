@@ -1,20 +1,21 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
+import java.util.Observer;
 
-public class Sheet extends Observable {
+public class XLModel extends Observable {
 
 	HashMap slotMap;
-	ArrayList<Observer> Observers;
 
-	public Sheet() {
+	public XLModel() {
 		slotMap = new HashMap<String, Slot>();
-		Observers = new ArrayList<Observers>();
 
 	}
 
-	public Slot newSlot() { //Kollar efter commentslot bland annat.
+	public Slot newSlot() {
+		return null; //Kollar efter commentslot bland annat.
 
 	}
 
@@ -35,7 +36,8 @@ public class Sheet extends Observable {
 	}
 
 	public double value(String name) {
-		if slotMap does not contain name throw
+		return 0;
+		//if slotMap does not contain name throw
 	}
 
 
