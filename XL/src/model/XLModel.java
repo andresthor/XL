@@ -23,6 +23,10 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	public Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
+		if (editorString.charAt(0) == '#') //Looks for Comment
+			return new CommentSlot(editorString);
+			
+		
 		try {
 			ExprSlot slot = new ExprSlot(editorString);
 			return slot;
@@ -38,12 +42,9 @@ public class XLModel extends Observable implements Environment {
 
 	}
 
-	public double getSlotValue(String name) { //
-		return 0;
-	}
 
 	public String getSlotString(String name) { //
-		return "";
+		return slotMap.get(name).toString();
 	}
 
 	public void recalculate() {
@@ -54,13 +55,14 @@ public class XLModel extends Observable implements Environment {
 		return status;
 	}
 
-	public double value(String name) { //TODO if slotMap does not contain name throw
+	public double value(String name) { //TODO if slotMap does not contain name throw error
 		return slotMap.get(name).value(this);
 	}
 
-	public double valueWOError(String name) { //Returns slot with no value, doesn't throw error.
+/*	public double getSlotValue(String name) { //Doesn't throw error if empty, instead returns empty.
 		return slotMap.get(name).value(this);
 	}
+*/
 
 
 

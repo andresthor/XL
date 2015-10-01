@@ -6,12 +6,12 @@ public class CommentSlot implements Slot{
 	
 String slotString;
 
-	public CommentSlot() {
-
+	public CommentSlot(String editorString) {
+		this.slotString = editorString;
 	}
 
 	public String toString() {
-		return "";
+		return slotString;
 	}
 
  	public double value(Environment env){
