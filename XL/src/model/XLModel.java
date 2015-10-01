@@ -68,7 +68,8 @@ public class XLModel extends Observable implements Environment {
 			return slotMap.get(name).value(this);
 		}
 			status = "Unable to reference empty slot";
-			throw new XLException("Empty reference " + name);
+			throw new XLException("Empty reference " + name); //a
+
 	}
 
 /*	public double getSlotValue(String name) { //Doesn't throw error if empty, instead returns empty.
