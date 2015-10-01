@@ -16,13 +16,10 @@ public class XLModel extends Observable implements Environment {
 	public XLModel() {
 		slotMap = new HashMap<String, Slot>();
 		status = "Start String!";
+	}
 
-		if (DEBUG) {
-			slotMap.put("A1", newSlot("5"));
-			slotMap.put("B2", newSlot("50"));
-		}
-
-
+	public void addSlot(String name, String editorValue) {
+		slotMap.put(name, newSlot(editorValue));
 	}
 
 	public Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
@@ -59,7 +56,10 @@ public class XLModel extends Observable implements Environment {
 
 	public double value(String name) { //TODO if slotMap does not contain name throw
 		return slotMap.get(name).value(this);
-		
+	}
+
+	public double valueWOError(String name) { //Returns slot with no value, doesn't throw error.
+		return slotMap.get(name).value(this);
 	}
 
 
