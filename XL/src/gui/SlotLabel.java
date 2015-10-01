@@ -9,25 +9,26 @@ import java.awt.event.MouseListener;
 public class SlotLabel extends ColoredLabel {
 	
 	private CurrentSlot currentSlot;
-    public SlotLabel(CurrentSlot currentSlot) {	
+	private String slotName;
+
+    public SlotLabel(CurrentSlot currentSlot, String name) {	
         super("                    ", Color.WHITE, RIGHT);
         this.addMouseListener(new MyAdapter());
+        this.currentSlot = currentSlot;
+        slotName = name;
     }
 
 	private class MyAdapter extends MouseAdapter {
         public void mouseClicked(MouseEvent e) {
-        	System.out.println("222");
 			SlotLabel.this.updateCurrent();
-			System.out.print("gogo");
         }
 	}
 	protected void updateCurrent(){
-		System.out.println("1");
 		currentSlot.setWhite();
-		System.out.print("2");
 		currentSlot.set(this);
-		System.out.print("3");
 		currentSlot.setYellow();
-		System.out.print("4");
+	}
+	public String toString(){
+		return slotName;
 	}
 }

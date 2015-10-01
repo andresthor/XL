@@ -2,6 +2,7 @@ package gui;
 
 import java.util.Observable;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class CurrentSlot extends Observable {
 	
@@ -11,13 +12,17 @@ public class CurrentSlot extends Observable {
 	}
 	public void set(SlotLabel newCurrent){
 		currentSlot = newCurrent;
+		setChanged();
+		notifyObservers();
+		//addObserver(newCurrent)
 	}
 	public void setWhite(){
-		System.out.println("This is good");
 		currentSlot.setBackground(Color.WHITE);
-		System.out.println("this is bad");
 	}
 	public void setYellow(){
 		currentSlot.setBackground(Color.YELLOW);
+	}
+	public String toString(){
+		return currentSlot.toString();
 	}
 }
