@@ -20,7 +20,10 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	public void addSlot(String name, String editorValue) {
-		slotMap.put(name, newSlot(editorValue));
+		if (editorValue == "")
+			slotMap.remove(name);
+		else
+			slotMap.put(name, newSlot(editorValue));
 		setChanged();
 		notifyObservers();
 	}
@@ -28,7 +31,6 @@ public class XLModel extends Observable implements Environment {
 	private Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
 		if (editorString.charAt(0) == '#') //Looks for Comment
 			return new CommentSlot(editorString);
-			
 		
 		try {
 			ExprSlot slot = new ExprSlot(editorString);
@@ -71,12 +73,6 @@ public class XLModel extends Observable implements Environment {
 			throw new XLException("Empty reference " + name);
 	}
 
-	public double getValue(String name) { // no status update if empty
-		if (!isEmpty(name)) {
-			return slotMap.get(name).value(this);
-		}
-			throw new XLException("Empty reference " + name);
-	}
 
 /*	public double getSlotValue(String name) { //Doesn't throw error if empty, instead returns empty.
 		return slotMap.get(name).value(this);
