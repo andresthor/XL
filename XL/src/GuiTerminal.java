@@ -37,6 +37,7 @@ public class GuiTerminal {
 		if (model.isEmpty("C1")) {
 			p("C1 is empty");
 		}
+		//Throws exception
 			p("C1: " + (double) model.value("C1"));
 
 /*
