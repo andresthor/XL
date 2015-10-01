@@ -11,10 +11,10 @@ public class GuiTerminal {
 
 	public GuiTerminal() {
 		
-		//new model
+		p("//new model");
 		model = new XLModel();
 
-		// ADD Expression
+		p("// ADD Expression");
 		
 		model.addSlot("A1", "5");
 		model.addSlot("B2", "A1 + 3");
@@ -34,11 +34,12 @@ public class GuiTerminal {
 		p("A2: " + (String) model.getSlotString("A2"));
 
 		p("// Read empty slot");
-		/*if (model.value("C1") == null) {
-			p("C1: " + (double) 2);
-		}*/
+		if (model.isEmpty("C1")) {
+			p("C1 is empty");
+		}
+			p("C1: " + (double) model.value("C1"));
 
-
+/*
 		p("//Errors");
 
 
@@ -49,7 +50,7 @@ public class GuiTerminal {
 		p("// Empty reference");
 		status();
 		p("Incomplete statement");
-		status();
+		status();*/
 
 
 		System.out.println("End of program");
