@@ -42,6 +42,8 @@ public class SlotLabel extends ColoredLabel implements Observer{
 	public void update(Observable o, Object arg) {
 		if(!model.isEmpty(slotName)){
 			setText(Double.toString(model.value(slotName)));
+		}else{
+			setText("");
 		}
 
 	}
