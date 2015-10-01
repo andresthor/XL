@@ -20,7 +20,9 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	public void addSlot(String name, String editorValue) {
-		if (editorValue == "")
+		System.out.println("editorValue:");
+		System.out.print(editorValue);
+		if (editorValue.equals(""))
 			slotMap.remove(name);
 		else
 			slotMap.put(name, newSlot(editorValue));
