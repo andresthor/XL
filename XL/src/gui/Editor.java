@@ -9,9 +9,7 @@ import javax.swing.JTextField;
 public class Editor extends JTextField implements Observer {
     public Editor(CurrentSlot currentSlot) {
         setBackground(Color.WHITE);
-    }
-    public void update() {
-
+        currentSlot.addObserver(this);
     }
 	@Override
 	public void update(Observable arg0, Object arg1) {
