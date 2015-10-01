@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 import expr.*;
 import java.io.IOException;
+import util.XLException;
 
 public class XLModel extends Observable implements Environment {
 
@@ -24,7 +25,7 @@ public class XLModel extends Observable implements Environment {
 		notifyObservers();
 	}
 
-	public Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
+	private Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
 		if (editorString.charAt(0) == '#') //Looks for Comment
 			return new CommentSlot(editorString);
 			
@@ -67,7 +68,7 @@ public class XLModel extends Observable implements Environment {
 			return slotMap.get(name).value(this);
 		}
 			status = "Unable to reference empty slot";
-			return 0;
+			throw new XLException("Empty reference " + name);
 	}
 
 /*	public double getSlotValue(String name) { //Doesn't throw error if empty, instead returns empty.
