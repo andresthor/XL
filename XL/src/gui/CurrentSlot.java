@@ -2,7 +2,6 @@ package gui;
 
 import java.util.Observable;
 import java.awt.Color;
-import javax.swing.SwingConstants;
 
 public class CurrentSlot extends Observable {
 	

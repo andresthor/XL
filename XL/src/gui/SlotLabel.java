@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class SlotLabel extends ColoredLabel {
+public class SlotLabel extends ColoredLabel implements Observer{
 	
 	private CurrentSlot currentSlot;
 	private String slotName;
@@ -30,5 +30,9 @@ public class SlotLabel extends ColoredLabel {
 	}
 	public String toString(){
 		return slotName;
+	}
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
 	}
 }
