@@ -10,6 +10,7 @@ public class StatusLabel extends ColoredLabel implements Observer {
     public StatusLabel(XLModel model) {
         super("", Color.WHITE);
         this.model = model;
+        model.addObserver(this);
     }
 
     public void update(Observable observable, Object object) {

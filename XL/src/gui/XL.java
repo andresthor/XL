@@ -19,7 +19,7 @@ public class XL extends JFrame implements Printable {
     private XLCounter counter;
     private XLList xlList;
     private XLModel model;
-    private StatusLabel statusLabel = new StatusLabel(model);
+    private StatusLabel statusLabel;
 
     public XL(XL oldXL) {
         this(oldXL.xlList, oldXL.counter);
@@ -32,6 +32,7 @@ public class XL extends JFrame implements Printable {
         xlList.add(this);
         counter.increment();
         model = new XLModel();
+        statusLabel = new StatusLabel(model);
         CurrentSlot currentSlot = new CurrentSlot();
         JPanel statusPanel = new StatusPanel(statusLabel, currentSlot);
         JPanel sheetPanel = new SheetPanel(ROWS, COLUMNS, currentSlot,model);

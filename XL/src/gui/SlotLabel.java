@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 import model.XLModel;
+import util.XLException;
 
 public class SlotLabel extends ColoredLabel implements Observer{
 	
@@ -39,6 +40,9 @@ public class SlotLabel extends ColoredLabel implements Observer{
 	}
 	@Override
 	public void update(Observable o, Object arg) {
-		setText(Double.toString(model.value(slotName)));
+		if(!model.isEmpty(slotName)){
+			setText(Double.toString(model.value(slotName)));
+		}
+
 	}
 }

@@ -32,7 +32,8 @@ public class Editor extends JTextField implements Observer, ActionListener {
 		
 	}
 	public void actionPerformed(ActionEvent e){
-		String input = getText();		
+		String input = getText();
+
 		model.addSlot(currentSlot.toString(),input);
 		//status.update(model,null);
 	}
