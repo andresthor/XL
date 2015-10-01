@@ -5,15 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import model.XLModel;
 
 import javax.swing.SwingConstants;
 
-public class SlotLabels extends GridPanel implements Observer{
+public class SlotLabels extends GridPanel{
     private List<SlotLabel> labelList;
     private CurrentSlot currentSlot;
 
     
-    public SlotLabels(int rows, int cols, CurrentSlot currentSlot) {
+    public SlotLabels(int rows, int cols, CurrentSlot currentSlot,XLModel model) {
         super(rows + 1, cols);
         labelList = new ArrayList<SlotLabel>(rows * cols);
 
@@ -25,7 +26,7 @@ public class SlotLabels extends GridPanel implements Observer{
         }
         for (int row = 1; row <= rows; row++) {
             for (char ch = 'A'; ch < 'A' + cols; ch++) {
-                SlotLabel label = new SlotLabel(currentSlot, Character.toString(ch)+Integer.toString(row));
+                SlotLabel label = new SlotLabel(currentSlot, Character.toString(ch)+Integer.toString(row) , model);
                 add(label);
                 labelList.add(label);
             }
@@ -34,9 +35,4 @@ public class SlotLabels extends GridPanel implements Observer{
         firstLabel.setBackground(Color.YELLOW);
         currentSlot.set(firstLabel);
     }
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-	}
 }

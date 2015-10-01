@@ -5,17 +5,23 @@ import java.awt.Event.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Observable;
+import java.util.Observer;
+import model.XLModel;
 
 public class SlotLabel extends ColoredLabel implements Observer{
 	
 	private CurrentSlot currentSlot;
 	private String slotName;
+	private XLModel model;
 
-    public SlotLabel(CurrentSlot currentSlot, String name) {	
+    public SlotLabel(CurrentSlot currentSlot, String name, XLModel model) {	
         super("                    ", Color.WHITE, RIGHT);
         this.addMouseListener(new MyAdapter());
         this.currentSlot = currentSlot;
         slotName = name;
+        this.model = model;
+        model.addObserver(this);
     }
 
 	private class MyAdapter extends MouseAdapter {
@@ -33,6 +39,6 @@ public class SlotLabel extends ColoredLabel implements Observer{
 	}
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		setText(Double.toString(model.value(slotName)));
 	}
 }
