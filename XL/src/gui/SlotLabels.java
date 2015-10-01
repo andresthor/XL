@@ -28,11 +28,12 @@ public class SlotLabels extends GridPanel implements Observer{
         }
         SlotLabel firstLabel = labelList.get(0);
         firstLabel.setBackground(Color.YELLOW);
+        currentSlot.set(firstLabel);
     }
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+		//YOYO WADAP??
 	}
 }

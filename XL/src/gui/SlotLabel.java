@@ -14,7 +14,8 @@ public class SlotLabel extends ColoredLabel {
 
 	private class MyAdapter extends MouseAdapter {
         public void mouseClicked(MouseEvent e) {
-	
+			currentSlot.setBackground(Color.WHITE);
+			
         }
 	}
 }
