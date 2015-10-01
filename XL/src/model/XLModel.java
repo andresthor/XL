@@ -20,8 +20,7 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	public void addSlot(String name, String editorValue) {
-		System.out.println("editorValue:");
-		System.out.print(editorValue);
+		if (DEBUG) System.out.print("addSlot: " + editorValue)
 		if (editorValue.equals(""))
 			slotMap.remove(name);
 		else
@@ -31,6 +30,7 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	private Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
+		if (DEBUG) System.out.print("newSlot: " + editorValue)
 		if (editorString.charAt(0) == '#') //Looks for Comment
 			return new CommentSlot(editorString);
 		
