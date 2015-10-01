@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="model.CircSlot" project="XL" file="/XL/src/model/CircSlot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="117" width="154" x="446" y="37"/>    
+    <position height="117" width="154" x="236" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="model.CommentSlot" project="XL" file="/XL/src/model/CommentSlot.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="154" x="640" y="37"/>    
+    <position height="135" width="154" x="430" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="model.XLPrintStream" project="XL" file="/XL/src/model/XLPrintStream.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="208" x="1028" y="37"/>    
+    <position height="99" width="208" x="520" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="model.ExprSlot" project="XL" file="/XL/src/model/ExprSlot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="135" width="154" x="834" y="37"/>    
+    <position height="135" width="154" x="624" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="model.XLModel" project="XL" file="/XL/src/model/XLModel.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="243" width="154" x="252" y="37"/>    
+    <position height="225" width="154" x="42" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <interface id="6" language="java" name="model.Slot" project="XL" file="/XL/src/model/Slot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="99" width="154" x="543" y="320"/>    
+    <position height="99" width="154" x="333" y="621"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,33 +57,46 @@
   </interface>  
   <class id="7" language="java" name="model.XLBufferedReader" project="XL" file="/XL/src/model/XLBufferedReader.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="171" x="41" y="37"/>    
+    <position height="99" width="171" x="42" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="8">    
+  <class id="8" language="java" name="java.util.Observable" project="XL" 
+    file="C:/Program Files/Java/jre1.8.0_60/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
+    <position height="279" width="178" x="253" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="9">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="6"/>  
   </realization>  
-  <realization id="9">    
+  <realization id="10">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="6"/>  
   </realization>  
-  <realization id="10">    
+  <realization id="11">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="6"/>  
   </realization>  
-  <association id="11">    
+  <association id="12">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="12" name="slotMap"/>      
-      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+      <attribute id="13" name="slotMap"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
