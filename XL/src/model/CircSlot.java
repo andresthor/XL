@@ -1,5 +1,7 @@
 package model;
 
+import expr.*;
+
 public class CircSlot implements Slot{
 
 	public CircSlot() {
@@ -10,7 +12,7 @@ public class CircSlot implements Slot{
 		return "";
 	}
 
- 	public double value(){
+ 	public double value(Environment env){
  		return 0;
  	}
 	

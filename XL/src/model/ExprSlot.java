@@ -1,23 +1,25 @@
 package model;
 
 import expr.*;
+import java.io.IOException;
 
 public class ExprSlot implements Slot {
+
  
-String slotString;
-double slotValue;
+Expr slotExpr;
 
-	public ExprSlot(String slotString) {
-		this.slotString = slotString;
-
+	public ExprSlot(String slotString) throws IOException {
+		
+		ExprParser parser = new ExprParser();
+        slotExpr = parser.build(slotString);
 	}
 
 	public String toString() {
-		return "";
+		return slotExpr.toString();
 	}
 
- 	public double value(){
- 		return 0;
+ 	public double value(Environment env) {
+ 		return slotExpr.value(env);
  	}
 
  }

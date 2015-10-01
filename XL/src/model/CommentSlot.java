@@ -1,5 +1,7 @@
 package model;
 
+import expr.*;
+
 public class CommentSlot implements Slot{
 	
 String slotString;
@@ -12,7 +14,7 @@ String slotString;
 		return "";
 	}
 
- 	public double value(){
+ 	public double value(Environment env){
  		return 0;
  	}
 	
