@@ -20,6 +20,8 @@ public class XLModel extends Observable implements Environment {
 
 	public void addSlot(String name, String editorValue) {
 		slotMap.put(name, newSlot(editorValue));
+		setChanged();
+		notifyObservers();
 	}
 
 	public Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
@@ -47,9 +49,9 @@ public class XLModel extends Observable implements Environment {
 		return slotMap.get(name).toString();
 	}
 
-	public void recalculate() {
+	/*public void recalculate() {
 		//For loop, iterates slotMap
-	}
+	}*/
 
 	public String getStatus() {
 		return status;
