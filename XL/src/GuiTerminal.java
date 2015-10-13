@@ -63,9 +63,13 @@ public class GuiTerminal {
 		p("");
 
 		p("// Empty reference");
-		model.addSlot("A1","C5");
+		model.addSlot("A5","C5");
 		status();
-		p("A1: " + (String) model.getSlotString("A1"));
+		try {
+			p("A5: " + (String) model.getSlotString("A5"));
+		} catch (NullPointerException e) {
+			p("A5 is " + e.getMessage());
+		}
 		p("");
 		
 		p("// Incomplete statement");
