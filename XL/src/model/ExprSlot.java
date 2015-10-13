@@ -5,8 +5,7 @@ import java.io.IOException;
 
 public class ExprSlot implements Slot {
 
- 
-Expr slotExpr;
+	Expr slotExpr;
 
 	public ExprSlot(String slotString) throws IOException {
 		
