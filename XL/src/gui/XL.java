@@ -13,6 +13,7 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
 public class XL extends JFrame implements Printable {
     private static final int ROWS = 10, COLUMNS = 8;
@@ -63,5 +64,8 @@ public class XL extends JFrame implements Printable {
 
     public static void main(String[] args) {
         new XL(new XLList(), new XLCounter());
+    }
+    public ArrayList<String> getSlots(){
+        return model.getAllSlots();
     }
 }

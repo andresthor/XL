@@ -100,6 +100,17 @@ public class XLModel extends Observable implements Environment {
 	public void p(Object o) { //DEBUG-metod
 		System.out.println(o);
 	}
+	public ArrayList<String> getAllSlots(){
+		//Iterator it = slotMap.entrySet().Iterator();
+		ArrayList allSlots = new ArrayList();
+
+		for(HashMap.Entry<String, Slot> entry : slotMap.entrySet()){
+			String st = entry.getKey() + " " + entry.getValue();
+			allSlots.add(st);
+		}
+		System.out.print(allSlots);
+		return allSlots;
+	}
 
 
 /*	public double getSlotValue(String name) { //Doesn't throw error if empty, instead returns empty.
