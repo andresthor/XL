@@ -1,6 +1,7 @@
 package model;
 
 import expr.*;
+import util.XLException;
 
 public class CircSlot implements Slot{
 
@@ -13,7 +14,7 @@ public class CircSlot implements Slot{
 	}
 
  	public double value(Environment env){
- 		return 0;
+ 		throw new XLException("Circular dependencies not allowed");
  	}
 	
 }

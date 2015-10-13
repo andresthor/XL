@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 import expr.*;
@@ -20,33 +21,52 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	public void addSlot(String name, String editorValue) {
-		if (DEBUG) System.out.print("addSlot: " + editorValue);
-		if (editorValue.equals(""))
-			slotMap.remove(name);
-		else
-			slotMap.put(name, newSlot(editorValue));
-		setChanged();
-		notifyObservers();
+		if (DEBUG) p("addSlot: " + name + ": " + editorValue);
+		if (editorValue.equals("")) { // Removes slot (if allowed)
+			Slot tmpSlot = slotMap.remove(name);
+			try {
+				recalculate();
+			} catch (XLException e) {
+				status = "Can't clear a referenced slot: " + e.getMessage();
+				slotMap.put(name, tmpSlot);
+			}
+		} else {
+			try { // Checks for circular slot
+				Slot newSlot = newSlot(editorValue);
+				checkCircularSlot(name, newSlot); //Checks for circular dependencies
+				slotMap.put(name, newSlot);
+				recalculate();
+			} catch (IOException|XLException e) {
+				status = e.getMessage();
+				
+			}
+			
+			setChanged();
+			notifyObservers();
+		}
 	}
 
-	private Slot newSlot(String editorString) {  //Kollar efter commentslot bland annat.
-		if (DEBUG) System.out.print("newSlot: " + editorString);
+
+	private Slot checkCircularSlot(String name, Slot newSlot) {
+		
+		Slot tmpSlot = slotMap.put(name, new CircSlot());
+		try {
+			newSlot.value(this);
+			return tmpSlot;
+		} catch (XLException e) {
+			//status = e.getMessage();
+			slotMap.put(name, tmpSlot);
+			throw e;
+		}
+	} 
+
+	private Slot newSlot(String editorString) throws IOException {  //Kollar efter commentslot bland annat.
+		if (DEBUG) p("newSlot: " + editorString);
 		if (editorString.charAt(0) == '#') //Looks for Comment
 			return new CommentSlot(editorString);
-		
-		try {
-			ExprSlot slot = new ExprSlot(editorString);
-			return slot;
-		} catch (IOException e) {
-        	if (DEBUG) {
-        		System.err.println(e.getMessage());
-	        	System.out.println("New ExprSlot failed");
-          		System.out.println(editorString);
-          	}
-        	status = e.getMessage();
-        	return null; // TODO borde inte returnera null (kanske)
-        }
 
+		ExprSlot slot = new ExprSlot(editorString);
+		return slot;
 	}
 
 
@@ -54,9 +74,11 @@ public class XLModel extends Observable implements Environment {
 		return slotMap.get(name).toString();
 	}
 
-	/*public void recalculate() {
-		//For loop, iterates slotMap
-	}*/
+	private void recalculate() {
+		for (Entry<String, Slot> entry : slotMap.entrySet()) {
+			entry.getValue().value(this);
+		}
+	}
 
 	public String getStatus() {
 		return status;
@@ -71,8 +93,12 @@ public class XLModel extends Observable implements Environment {
 		if (!isEmpty(name)) {
 			return slotMap.get(name).value(this);
 		}
-			status = "Unable to reference empty slot";
-			throw new XLException("Empty reference " + name);
+			status = "Unable to reference empty slot " + name;
+			throw new XLException("Unable to reference empty slot " + name);
+	}
+
+	public void p(Object o) { //DEBUG-metod
+		System.out.println(o);
 	}
 
 
