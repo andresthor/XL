@@ -12,14 +12,12 @@ public class XLBufferedReader extends BufferedReader {
     public XLBufferedReader(String name) throws FileNotFoundException {
         super(new FileReader(name));
     }
-
-    // TODO Change Object to something appropriate
-    public void load(Map<String, Object> map) {
+    public void load(XLModel model) {
         try {
             while (ready()) {
                 String string = readLine();
                 int i = string.indexOf('=');
-                // TODO
+                model.addSlot(string.substring(0,i),string.substring(i+1));                
             }
         } catch (Exception e) {
             throw new XLException(e.getMessage());

@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
 import expr.*;
-import java.io.IOException;
+import java.io.*;
 import util.XLException;
 
 public class XLModel extends Observable implements Environment {
@@ -99,21 +99,18 @@ public class XLModel extends Observable implements Environment {
 	}
 
 	public void clearAllSlots() {
-		slotMap = new HashMap<String, Slot>();
+		slotMap.clear();
 		setChanged();
 		notifyObservers();
 	}
-
-	public ArrayList<String> getAllSlots(){
-		//Iterator it = slotMap.entrySet().Iterator();
-		ArrayList<String> allSlots = new ArrayList<String>();
-
-		for(HashMap.Entry<String, Slot> entry : slotMap.entrySet()){
-			String st = entry.getKey() + " = " + entry.getValue();
-			allSlots.add(st);
-		}
-		if (DEBUG) p(allSlots);
-		return allSlots;
+	public void save(String path) throws FileNotFoundException{
+		XLPrintStream writer = new XLPrintStream(path);
+		writer.save(slotMap.entrySet());
+	}
+	public void load(String path) throws FileNotFoundException{
+		XLBufferedReader reader = new XLBufferedReader(path);
+		clearAllSlots();
+		reader.load(this);
 	}
 
 

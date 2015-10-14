@@ -12,7 +12,8 @@ class LoadMenuItem extends OpenMenuItem {
     }
 
     protected void action(String path) throws FileNotFoundException {
-        // TODO
+        xl.getModel().load(path);
+        statusLabel.setText("File was loaded");
     }
 
     protected int openDialog(JFileChooser fileChooser) {

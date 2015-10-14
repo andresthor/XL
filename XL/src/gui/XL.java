@@ -65,7 +65,7 @@ public class XL extends JFrame implements Printable {
     public static void main(String[] args) {
         new XL(new XLList(), new XLCounter());
     }
-    public ArrayList<String> getSlots(){
-        return model.getAllSlots();
+    public XLModel getModel(){
+        return model;
     }
 }
