@@ -14,10 +14,9 @@ class SaveMenuItem extends OpenMenuItem {
 
     protected void action(String path) throws FileNotFoundException {
     	
-   
     	xl.getModel().save(path);
 
-       	if(path.toLowerCase().endsWith(".xl")) {
+      if(path.toLowerCase().endsWith(".xl")) {
    			statusLabel.setText("The file was saved!");	
    		}else if(path.contains(".")){
    			statusLabel.setText("The file was saved but with an incorrect extension, consider changing it");
