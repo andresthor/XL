@@ -36,7 +36,6 @@ public abstract class OpenMenuItem extends JMenuItem implements ActionListener {
                 xl.rename(file.getName());
             } catch (FileNotFoundException e) {
                 statusLabel.setText(e.getMessage());
-                System.out.print("Händer inte detta??");
             }
         }
     }
