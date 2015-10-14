@@ -10,6 +10,11 @@ import java.util.Observer;
 import model.XLModel;
 import util.*;
 
+/**
+ * Observer of the slots in the model-view-controller architecture. Notifies the
+ * user of what slot is being edited. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ */
 public class SlotLabel extends ColoredLabel implements Observer{
 	
 	private CurrentSlot currentSlot;

@@ -2,11 +2,15 @@ package model;
 
 import expr.*;
 
+/**
+ * A Slot that handles Comments.
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ */
 public class CommentSlot implements Slot{
 	
 String slotString;
-
-	public CommentSlot(String editorString) {
+        
+        public CommentSlot(String editorString) {
 		this.slotString = editorString;
 	}
 

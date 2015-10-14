@@ -9,25 +9,43 @@ import expr.*;
 import java.io.*;
 import util.XLException;
 
+/**
+ * A <code>XLmodel<code> is the model in the model-view-controller pattern for
+ * the XL program. This creates, handles and removes all the slots aswell as 
+ * notifing the gui of errors. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ */
 public class XLModel extends Observable implements Environment {
 
 	private HashMap<String, Slot> slotMap;
 	private String status;
 	boolean DEBUG = true;
 
-	public XLModel() {
+	/**
+         * Creates a new model if none exists. 
+         */
+        public XLModel() {
 		slotMap = new HashMap<String, Slot>();
 		status = "Start String!";
 	}
 
-	public void addSlot(String name, String editorValue) {
+	/**
+         * Adds new slot to the model from the provided string. 
+         * @param name
+         *          The address of the slot that is to be added.
+         * @param editorValue 
+         *          The <code>String<code> value that is to be associated with 
+         *          the slot.  
+         */
+        public void addSlot(String name, String editorValue) {
 		if (DEBUG) p("addSlot: " + name + ": " + editorValue);
 		if (editorValue.equals("")) { // Removes slot (if allowed)
-			Slot tmpSlot = slotMap.remove(name);
+			Slot tmpSlot = slotMap.remove(name); 
 			try {
 				recalculate();
 			} catch (XLException e) {
-				status = "Can't clear a referenced slot: " + e.getMessage();
+				status = "Can't clear a referenced slot: " 
+                                        + e.getMessage();
 				slotMap.put(name, tmpSlot);
 			}
 		} else {
@@ -35,8 +53,8 @@ public class XLModel extends Observable implements Environment {
 			
 			try {
 				Slot newSlot = newSlot(editorValue);
-				checkCircularSlot(name, newSlot); // Checks for circular slot
-				slotMap.put(name, newSlot); //checks expression
+				checkCircularSlot(name, newSlot); //Checks for circular slot
+				slotMap.put(name, newSlot); //Checks expression
 				recalculate(); //checks dependencies
 			} catch (IOException|XLException e) {
 				if (tmpSlot == null) { 
@@ -53,12 +71,34 @@ public class XLModel extends Observable implements Environment {
 		notifyObservers();
 	}
 
-	private void checkCircularSlot(String name, Slot newSlot) throws XLException { // Checks for circular slot
+	/**
+         * Checks for circular slot. 
+         * @param name
+         *          The address of the slot that is being checked. 
+         * @param newSlot
+         *          The slot that is being checked. 
+         * @throws XLException
+         *          If circular dependency is found. 
+         */
+        private void checkCircularSlot(String name, Slot newSlot) throws XLException { // Checks for circular slot
 		slotMap.put(name, new CircSlot());
 		newSlot.value(this);
 	}
 
-	public Slot newSlot(String editorString) throws IOException, XLException {  //Kollar efter commentslot bland annat.
+	/**
+         * Decides if the slot is to be created as <code>CommentSlot<code> or 
+         * <code>ExprSlot. 
+         * @param editorString
+         *          The information that is to be stored in the slot. Can be
+         *          either a comment or an expression. 
+         * @return
+         *          Returns the slot that is created. 
+         * @throws IOException
+         *          If the Slot cannot be created with the provided data. 
+         * @throws XLException 
+         *          If the information provided violates the grammar in parser. 
+         */
+        public Slot newSlot(String editorString) throws IOException, XLException {  //Kollar efter commentslot bland annat.
 		if (DEBUG) p("newSlot: " + editorString);
 		if (editorString.charAt(0) == '#') //Looks for Comment
 			return new CommentSlot(editorString);
@@ -94,11 +134,11 @@ public class XLModel extends Observable implements Environment {
 			throw new XLException(status = "Unable to reference empty slot " + name);
 	}
 
-	/*public String slotPrint(String name){
-		return slotMap.get(name).toString();
-	}*/
-
-	public void p(Object o) { //DEBUG-metod
+	/**
+         * DEBUG - method. 
+         * @param o 
+         */
+        public void p(Object o) {
 		System.out.println(o);
 	}
 
@@ -123,12 +163,6 @@ public class XLModel extends Observable implements Environment {
 		setChanged();
 		notifyObservers();
 	}
-
-
-/*	public double getSlotValue(String name) { //Doesn't throw error if empty, instead returns empty.
-		return slotMap.get(name).value(this);
-	}
-*/
 
 
 

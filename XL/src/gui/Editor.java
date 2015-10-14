@@ -9,6 +9,11 @@ import model.XLModel;
 
 import javax.swing.JTextField;
 
+/**
+ * The observer in the model-view-controller architecture. Notifies the gui of 
+ * actions from the user. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ */
 public class Editor extends JTextField implements Observer, ActionListener {
 
 	private XLModel model;
