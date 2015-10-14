@@ -58,7 +58,7 @@ public class XLModel extends Observable implements Environment {
 		newSlot.value(this);
 	}
 
-	private Slot newSlot(String editorString) throws IOException, XLException {  //Kollar efter commentslot bland annat.
+	public Slot newSlot(String editorString) throws IOException, XLException {  //Kollar efter commentslot bland annat.
 		if (DEBUG) p("newSlot: " + editorString);
 		if (editorString.charAt(0) == '#') //Looks for Comment
 			return new CommentSlot(editorString);
@@ -94,6 +94,10 @@ public class XLModel extends Observable implements Environment {
 			throw new XLException(status = "Unable to reference empty slot " + name);
 	}
 
+	/*public String slotPrint(String name){
+		return slotMap.get(name).toString();
+	}*/
+
 	public void p(Object o) { //DEBUG-metod
 		System.out.println(o);
 	}
@@ -107,10 +111,13 @@ public class XLModel extends Observable implements Environment {
 		XLPrintStream writer = new XLPrintStream(path);
 		writer.save(slotMap.entrySet());
 	}
-	public void load(String path) throws FileNotFoundException{
+	public void load(String path) throws FileNotFoundException,XLException{
 		XLBufferedReader reader = new XLBufferedReader(path);
 		clearAllSlots();
-		reader.load(this);
+		reader.load(slotMap,this);
+		recalculate();
+		setChanged();
+		notifyObservers();
 	}
 
 

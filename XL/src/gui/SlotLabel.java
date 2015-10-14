@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 import model.XLModel;
-import util.XLException;
+import util.*;
 
 public class SlotLabel extends ColoredLabel implements Observer{
 	
@@ -44,6 +44,7 @@ public class SlotLabel extends ColoredLabel implements Observer{
 			if(model.getSlotString(slotName).charAt(0)== '#'){
 				setText(model.getSlotString(slotName).substring(1));
 			}else{
+				//setText(model.slotPrint(slotName));
 				setText(Double.toString(model.value(slotName)));
 			}
 		}else{

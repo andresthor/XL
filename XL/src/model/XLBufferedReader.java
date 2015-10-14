@@ -7,13 +7,22 @@ import java.util.Map;
 
 import util.XLException;
 
-//TODO move to another package
 public class XLBufferedReader extends BufferedReader {
     public XLBufferedReader(String name) throws FileNotFoundException {
         super(new FileReader(name));
     }
-    public void load(XLModel model) {
-        try {
+    public void load(Map<String, Slot> map, XLModel model) {
+        try{
+            while(ready()){
+                String string = readLine();
+                int i = string.indexOf('=');
+                Slot newSlot = model.newSlot(string.substring(i+1));
+                map.put(string.substring(0,i),newSlot);
+            }
+        } catch(Exception e){
+            throw new XLException(e.getMessage());
+        }
+        /*try {
             while (ready()) {
                 String string = readLine();
                 int i = string.indexOf('=');
@@ -21,6 +30,7 @@ public class XLBufferedReader extends BufferedReader {
             }
         } catch (Exception e) {
             throw new XLException(e.getMessage());
-        }
+        }*/
+        return;
     }
 }
