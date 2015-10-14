@@ -114,8 +114,12 @@ public class XLModel extends Observable implements Environment {
 	public void load(String path) throws FileNotFoundException,XLException{
 		XLBufferedReader reader = new XLBufferedReader(path);
 		clearAllSlots();
-		reader.load(slotMap,this);
-		recalculate();
+		try{
+			reader.load(slotMap,this);
+			recalculate();
+		}catch(XLException e){
+			throw new XLException(e.getMessage());
+		}
 		setChanged();
 		notifyObservers();
 	}
