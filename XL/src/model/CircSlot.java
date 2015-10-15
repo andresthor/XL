@@ -3,6 +3,10 @@ package model;
 import expr.*;
 import util.XLException;
 
+/**
+ * This Slot helps the model handle circular dependencies. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ */
 public class CircSlot implements Slot{
 
 	public CircSlot() {

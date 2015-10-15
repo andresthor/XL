@@ -6,15 +6,19 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import model.XLModel;
-
 import javax.swing.SwingConstants;
 
+/**
+ * Iterates through the information in the model and displays the slots in
+ * the grid. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ */
 public class SlotLabels extends GridPanel{
     private List<SlotLabel> labelList;
     private CurrentSlot currentSlot;
 
     
-    public SlotLabels(int rows, int cols, CurrentSlot currentSlot,XLModel model) {
+    public SlotLabels(int rows, int cols, CurrentSlot currentSlot, XLModel model) {
         super(rows + 1, cols);
         labelList = new ArrayList<SlotLabel>(rows * cols);
 

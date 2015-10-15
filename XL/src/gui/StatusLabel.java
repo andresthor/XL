@@ -5,6 +5,10 @@ import java.util.Observable;
 import java.util.Observer;
 import model.XLModel;
 
+/**
+ * Colors the active slot that is being edited. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ */
 public class StatusLabel extends ColoredLabel implements Observer {
     XLModel model;
     public StatusLabel(XLModel model) {

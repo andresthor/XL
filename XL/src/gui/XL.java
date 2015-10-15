@@ -13,8 +13,13 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.util.ArrayList;
 
+/**
+ * The view and controller for the XL program that implements the model-view-
+ * controller architecture. Handles the displayed information and the inputs 
+ * made by the user. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ */
 public class XL extends JFrame implements Printable {
     private static final int ROWS = 10, COLUMNS = 8;
     private XLCounter counter;
@@ -22,10 +27,21 @@ public class XL extends JFrame implements Printable {
     private XLModel model;
     private StatusLabel statusLabel;
 
+    /**
+     * Shortened constructor. 
+     * @param oldXL 
+     */
     public XL(XL oldXL) {
         this(oldXL.xlList, oldXL.counter);
     }
 
+    /**
+     * The constructor for the gui. 
+     * @param xlList
+     *          List of all running gui's. 
+     * @param counter
+     *          Number of running gui's
+     */
     public XL(XLList xlList, XLCounter counter) {
         super("Untitled-" + counter);
         this.xlList = xlList;
@@ -48,6 +64,16 @@ public class XL extends JFrame implements Printable {
         setVisible(true);
     }
 
+    /**
+     * Handles the printing of the slotpanel. 
+     * @param g
+     *      Graphics to be printed.
+     * @param pageFormat
+     *      The format for the print. 
+     * @param page
+     *      The number of pages to be printed. 
+     * @return 
+     */
     public int print(Graphics g, PageFormat pageFormat, int page) {
         if (page > 0)
             return NO_SUCH_PAGE;

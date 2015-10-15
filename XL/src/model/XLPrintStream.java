@@ -5,13 +5,15 @@ import java.io.PrintStream;
 import java.util.Map.Entry;
 import java.util.Set;
 
-//TODO move to another package
+/**
+ * Saves the information in the model to file. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ */
 public class XLPrintStream extends PrintStream {
     public XLPrintStream(String fileName) throws FileNotFoundException {
         super(fileName);
     }
 
-    // TODO Change Object to something appropriate
     public void save(Set<Entry<String, Slot>> set) {
         for (Entry<String, Slot> entry : set) {
             print(entry.getKey());
