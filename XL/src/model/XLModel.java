@@ -13,7 +13,7 @@ import util.XLException;
  * A <code>XLmodel<code> is the model in the model-view-controller pattern for
  * the XL program. This creates, handles and removes all the slots aswell as 
  * notifing the gui of errors. 
- * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andres Saemundsson. 
  */
 public class XLModel extends Observable implements Environment {
 

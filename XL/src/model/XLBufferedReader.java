@@ -10,7 +10,7 @@ import util.XLException;
 /**
  * An <code>XLBufferedReader<code>  reads text from a character input stream
  * and extends the functionality of <code>BufferedReader<code>
- * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andres Saemundsson. 
  */
 public class XLBufferedReader extends BufferedReader {
     public XLBufferedReader(String name) throws FileNotFoundException {

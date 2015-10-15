@@ -5,7 +5,7 @@ import java.io.IOException;
 
 /**
  * This <code>Slot<code> handles expressions.
- * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andres Saemundsson. 
  */
 public class ExprSlot implements Slot {
 

@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * Saves the information in the model to file. 
- * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson.
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andres Saemundsson.
  */
 public class XLPrintStream extends PrintStream {
     public XLPrintStream(String fileName) throws FileNotFoundException {

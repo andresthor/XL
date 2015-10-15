@@ -4,7 +4,7 @@ import expr.*;
 
 /**
  * A Slot that handles Comments.
- * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andrés Þór Sæmundsson. 
+ * @author Emil Westenius, Adam Jalkemo, Anton Friberg, Andres Saemundsson. 
  */
 public class CommentSlot implements Slot{
 	
